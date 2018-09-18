@@ -1,0 +1,16 @@
+/*
+ * fontSize=100px, 设计稿宽度 = 750px 
+ */
+ 
+ @function px2rem($px, $base-font-size: 100px) {
+  @if (unitless($px)) {
+     @warn "Assuming #{$px} to be in pixels, attemping to convert it into pixels for you";
+     @return px2rem($px + 0px);
+  } @else if (unit($px) == rem) {
+     @return $px
+  }
+  @return ($px / $base-font-size) * 1rem;
+ }
+ 
+ // 使用：
+ font-size: px2rem(18px); // 自动转成0.18rem
